@@ -1,0 +1,165 @@
+{%extends 'base.html'%} {% block content%} {%if user.is_authenticated%}
+<div class="container mt-2 p-3">
+  <div class="container my-5 rounded mx-auto bg-light shadow">
+    <div class="row m-1 p-4">
+      <div class="col">
+        <div
+          class="p-1 h2 text-center mx-auto display-inline-block"
+          style="color: #f8bf64"
+        >
+          <i
+            class="far fa-file text-white rounded p-2"
+            style="background-color: #f8bf64"
+          ></i>
+          <span>Tender Details</span>
+        </div>
+      </div>
+    </div>
+    <div class="p-2 mx-4 border-black-25 border-bottom"></div>
+    <div class="row mx-1 px-5 pb-3 w-80">
+      <div class="col mx-auto">
+        <!-- Tendor No -->
+        <div class="row px-3 align-items-center todo-item rounded">
+          <div class="col px-1 m-1 d-flex align-items-center">
+            <h6>Tender No</h6>
+          </div>
+          <div class="col-auto m-1 p-0 todo-actions">
+            <div class="row todo-created-info">
+              <div class="col-auto d-flex align-items-center pr-2">
+                <label class="date-label my-2 text-black-50"
+                  >{{Tender.tender_no}}</label
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Tendor Title -->
+        <div class="row px-3 align-items-center todo-item rounded">
+          <div class="col px-1 m-1 d-flex align-items-center">
+            <h6>Tender title</h6>
+          </div>
+          <div class="col-auto m-1 p-0 todo-actions">
+            <div class="row todo-created-info">
+              <div class="col-auto d-flex align-items-center pr-2">
+                <label class="date-label my-2 text-black-50"
+                  >{{Tender.title}}</label
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Tendor Category -->
+        <div class="row px-3 align-items-center todo-item rounded">
+          <div class="col px-1 m-1 d-flex align-items-center">
+            <h6>Tender category</h6>
+          </div>
+          <div class="col-auto m-1 p-0 todo-actions">
+            <div class="row todo-created-info">
+              <div class="col-auto d-flex align-items-center pr-2">
+                <label class="date-label my-2 text-black-50"
+                  >{{Tender.category.name}}</label
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Tendor Status -->
+        <div class="row px-3 align-items-center todo-item rounded">
+          <div class="col px-1 m-1 d-flex align-items-center">
+            <h6>Tender status</h6>
+          </div>
+          <div class="col-auto m-1 p-0 todo-actions">
+            <div class="row todo-created-info">
+              <div class="col-auto d-flex align-items-center pr-2">
+                {%if Tender.status == 'available'%}
+                <label class="date-label my-2 text-white badge badge-success"
+                  >{{Tender.status}}</label
+                >
+                {%elif Tender.status == 'assigned'%}
+                <label class="date-label my-2 text-white badge badge-secondary"
+                  >{{Tender.status}}</label
+                >
+                {%else%}
+                <label class="date-label my-2 text-white badge badge-danger"
+                  >{{Tender.status}}</label
+                >
+                {%endif%}
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Tendor Expiry -->
+        <div class="row px-3 align-items-center todo-item rounded">
+          <div class="col px-1 m-1 d-flex align-items-center">
+            <h6>Tender expiry date</h6>
+          </div>
+          <div class="col-auto m-1 p-0 todo-actions">
+            <div class="row todo-created-info">
+              <div class="col-auto d-flex align-items-center pr-2">
+                <i class="far fa-calendar-alt my-2 px-2 text-black-50"></i>
+                <label class="my-2 text-muted">{{Tender.due_date}}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="p-2 mx-4 border-black-25 border-bottom"></div>
+    <div class="container mx-1 px-5 py-3">
+      <div
+        class="row align-items-center justify-content-between bg-light p-3 mb-3"
+      >
+        <h5>Tender description</h5>
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          onclick="DownloadTendor()"
+        >
+          <i class="fas fa-file-download"></i> Download Tendor
+        </button>
+      </div>
+      <p>{{Tender.description}}</p>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi
+        incidunt temporibus dolores asperiores quo ab consectetur laboriosam
+        necessitatibus minima aperiam, non quia ut sint rem accusamus illum?
+        Accusamus, alias? Maxime iure incidunt delectus facere voluptate earum
+        facilis vitae explicabo, soluta consequuntur, corrupti perferendis
+        voluptas harum quae minus fugit modi numquam!
+      </p>
+    </div>
+    <div class="row py-3">
+      <div class="col-md-12">
+        {%if Tender.status == 'assigned' or Tender.status == 'expired' %}
+        <button
+          type="button"
+          class="btn btn-dark btn-block"
+          disabled
+          style="cursor: not-allowed"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Tender has expired or has been assigned"
+        >
+          Start Bid
+        </button>
+        {%else%}
+        <button
+          type="button"
+          class="btn btn-dark btn-block"
+          data-toggle="modal"
+          data-target="#bid-modal"
+        >
+          Start Bid
+        </button>
+        {%endif%}
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function DownloadTendor() {
+    console.log("DOWNLOAD TENDOR");
+    alert("Downloading...");
+  }
+</script>
+{% include 'partials/bid-modal.html' %} {%endif%} {%endblock%}

@@ -1,0 +1,122 @@
+{% extends 'base.html' %} {% load static %} {% block content%}
+<!--  -->
+{% include 'partials/carousel.html' %}
+<div class="container mt-5 mb-5">
+  <div id="motivation" class="section">
+    <div class="d-flex align-items-center">
+      <div class="col-md-6">
+        <h2>Motivation</h2>
+        <p>
+          Efficient tender management is crucial for organizations to streamline
+          procurement processes, reduce errors, and enhance collaboration among
+          stakeholders.
+        </p>
+      </div>
+      <div class="col-md-6" style="border-radius: 6px; overflow: hidden">
+        <img
+          src="https://images.unsplash.com/photo-1503945438517-f65904a52ce6?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Motivation Image"
+          class="img-fluid"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div id="proposed-solution" class="section mt-5">
+    <div class="d-flex align-items-center">
+      <div class="col-md-6">
+        <img
+          src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Motivation Image"
+          class="img-fluid"
+        />
+      </div>
+      <div class="col-md-6">
+        <h2>Proposed Solution</h2>
+        <p>
+          The proposed tender management system offers a centralized platform
+          for managing tender processes from issuance to contract awarding. Key
+          features include:
+        </p>
+        <ul style="list-style: none">
+          <li>
+            <i class="fas fa-check-circle"></i> Centralized information hub for
+            tender details
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i> Online tender requests and
+            submissions
+          </li>
+          <li><i class="fas fa-check-circle"></i> Alerts and notifications</li>
+          <li><i class="fas fa-check-circle"></i> Comprehensive reporting</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="objectives" class="section mt-5">
+    <div class="d-flex align-items-center">
+      <div class="col-md-6">
+        <h2>Objectives</h2>
+        <p>The objectives of the tender management system are:</p>
+        <ul style="list-style: none">
+          <li>
+            <i class="fas fa-check-circle"></i> Improving tender purchasing and
+            procurement processes
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i> Ensuring efficient process for
+            both buyers and sellers
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i> Facilitating easy document
+            management
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i> Implementing systematic bid
+            assessment
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i> Reducing likelihood of poor
+            submissions
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <img
+          src="https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Motivation Image"
+          class="img-fluid"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12 bg-light">
+    <h3 id="for-buyers" class="mt-5">For Buyers (Companies)</h3>
+    <p>Buyers can:</p>
+    <ul>
+      <li>Register on the platform</li>
+      <li>Create profiles with organization and procurement details</li>
+      <li>Create and configure tender opportunities</li>
+      <li>Define tender details and evaluation criteria</li>
+    </ul>
+  </div>
+  <div class="col-md-12" style="background-color: #33485d; color: white">
+    <h3 id="for-bidders" class="mt-5" style="color: white">
+      For Bidders (Companies Offering Tendering Services)
+    </h3>
+    <p>Bidders can:</p>
+    <ul>
+      <li>Register on the platform</li>
+      <li>Create profiles with company details and certifications</li>
+      <li>Receive notifications about tender updates</li>
+      <li>Access feedback and evaluation results</li>
+      <li>Upload tender documents</li>
+    </ul>
+  </div>
+</div>
+<!-- Footer -->
+{% include 'partials/footer.html' %}
+<!--  -->
+{%endblock%}

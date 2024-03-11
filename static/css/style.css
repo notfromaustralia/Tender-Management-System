@@ -1,0 +1,100 @@
+ /* Add custom styles here */
+ .carousel-inner {
+     height: 500px;
+     /* Set height of carousel */
+ }
+
+ .slider-caption {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     text-align: center;
+     color: #ffffff;
+ }
+
+ .login-register-container {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+
+ .login-register-form {
+     width: 700px;
+     padding: 40px;
+     background-color: #ffffff;
+     border-radius: 8px;
+     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+ }
+
+ .form-group {
+     margin-bottom: 20px;
+ }
+
+ /* Style for bottom alert */
+ .bottom-alert {
+     text-align: center;
+     align-items: center;
+     position: fixed;
+     bottom: 20px;
+     left: 50%;
+     transform: translateX(-50%);
+     z-index: 9999;
+     /* Ensure it's above other content */
+ }
+
+#dashboard-hero{
+    background: url(../images/hero.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 0;
+    height: 450px;
+}
+.card-box-ico {
+    padding: 1.2rem;
+    background-color: #273e5f24;
+    /* border: 3px solid #273d5f; */
+    border-radius: 20px;
+    margin-right: 6px;
+}
+
+.card-box-ico span {
+    font-size: 2rem;
+    color:white;
+}
+.card-box-ico2 {
+    padding: 1.2rem;
+    /* border: 3px solid #273d5f; */
+    border-radius: 20px;
+    margin-right: 6px;
+}
+
+.card-box-ico2 span {
+    font-size: 5rem;
+    color:#273d5f;
+}
+
+.link-icon {
+    color:#273d5f;
+    font-weight: 500;
+}
+
+.link-icon span {
+    font-size: 14px;
+    padding-left: 4px;
+    vertical-align: middle;
+}
+
+.card-stretched-link:hover {
+    opacity: 0.3;
+    /* Opacity on hover (adjust as needed) */
+    cursor: pointer;
+    /* Indicate clickable behavior */
+}
+/* HIDE HELPER TEXTS */
+#id_password1_helptext{
+    display: none;
+}
+#id_password2_helptext{
+    display: none;
+}

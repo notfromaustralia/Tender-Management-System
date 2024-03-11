@@ -1,0 +1,43 @@
+{%load static%}
+<footer class="footer bg-light p-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="d-flex align-items-center">
+          <div
+            class="rounded-circle overflow-hidden"
+            style="width: 40px; height: 40px"
+          >
+            <img
+              src="{% static 'images/logo.png' %}"
+              alt="Tender Management System Logo"
+              class="w-100 h-100"
+            />
+          </div>
+          TMS
+        </div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, animi
+          natus possimus cumque incidunt molestias!
+        </p>
+      </div>
+      <div class="col-md-4">
+        <div class="footer-links">
+          <h5>Useful Links</h5>
+          <ul>
+            <li><a href="{% url 'index'%}">Home</a></li>
+            <li><a href="{% url 'about'%}">About Us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h5>Contact Information</h5>
+        <p>Email: info@example.com</p>
+        <p>Phone: +1 (123) 456-7890</p>
+        <p>Address: 123 Street, City, Country</p>
+      </div>
+    </div>
+  </div>
+</footer>
