@@ -1,3 +1,4 @@
+{% load crispy_forms_tags %}
 <!-- Modal -->
 <div
   class="modal fade"
@@ -11,9 +12,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="bid-modal-label" style="color: #273d5f">
-          <span class="fas fa-file-invoice"></span> Tender Applicaion
+          <span class="fas fa-file-invoice"></span> Tender Application
           <p class="text-muted h6" style="font-weight: 300">
-            {{Tender.tender_no}}
+            {{ Tender.tender_no }}
           </p>
         </h5>
         <button
@@ -26,31 +27,24 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label class="form-label" for="customFile" style="font-size: 12px"
-              >Bidding Price(BWP)</label
+        <form
+          action="{% url 'tender_bid' Tender.id %}"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          {% csrf_token %}
+          <div class="form-group">{{ BidForm|crispy }}</div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-dark">Submit</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
             >
-            <input
-              type="number"
-              placeholder="BWP 50000.00"
-              class="form-control py-1 px-3"
-            />
+              Close
+            </button>
           </div>
-
-          <div class="col-md-12 mb-3">
-            <label class="form-label" for="customFile" style="font-size: 12px"
-              >Upload proposal document</label
-            >
-            <input type="file" class="form-control py-1 px-2" id="customFile" />
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-          Close
-        </button>
-        <button type="button" class="btn btn-dark">Submit</button>
+        </form>
       </div>
     </div>
   </div>

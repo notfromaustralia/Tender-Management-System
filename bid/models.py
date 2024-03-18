@@ -12,7 +12,7 @@ class Bid(models.Model):
     bidder = models.ForeignKey(User, on_delete=models.CASCADE)
     bid_amount = models.DecimalField(max_digits=10, decimal_places=2)
     document = models.FileField(upload_to='tender_proposals/')
-    quality_rating = models.IntegerField()
-    compliance_rating = models.IntegerField()
+    # quality_rating = models.IntegerField(default=0)
+    # compliance_rating = models.IntegerField(default=0)
     status = models.CharField(max_length=20, choices=status_choices, default='pending')
     # Additional fields as needed 

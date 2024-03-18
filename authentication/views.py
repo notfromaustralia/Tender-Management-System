@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout as auth_logout
 from .forms import SignUpForm, UserCreationForm
 from .models import SiteUser
 from tender.models import Category,Tender
+from django.contrib import admin
 
 def signup(request):
     if request.method == 'POST':
@@ -55,8 +56,8 @@ def logout(request):
     return render(request, 'webpage/index.html',context)
 
 def dashboard(request):
-    tenders=Tender.objects.all()
+    tenders=Tender.objects.filter(status='available')
     context ={
-        'Tenders': tenders,
+        'AvailableTenders': tenders,
     }
     return render(request,'auth/dashboard.html',context)

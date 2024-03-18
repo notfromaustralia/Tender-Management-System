@@ -1,44 +1,30 @@
-{%extends 'base.html'%} {% block content%} {%if user.is_authenticated%}
-<div class="container mt-5">
-  {% if not user.is_superuser %}
-  <div
-    class="container text-white mt-2 p-3 rounded"
-    style="background-color: #f8bf64"
-  >
-    <div class="row">
-      <div class="col-md-12">
-        <br />
-        <div class="row justify-content-between px-4">
-          <h2><span class="fas fa-user"></span> Welcome {{ user.username }}</h2>
-          <div>
-            <a
-              type="button"
-              href="{% url 'create_tender'%}"
-              class="btn btn-dark"
-              ><span class="fas fa-plus"></span> Publish Tender
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+{%extends 'base.html'%} {%block content%}
+<div class="container mt-4 p-3">
   <div class="container mt-5 mb-5 text-center">
     <div class="row">
-      <div class="col-md-12">
-        <div class="title-wrap row justify-content-between">
+      <!-- <div class="col-md-12 mb-4">
+        <div class="input-group">
+          <input
+            style="height: 50px"
+            type="search"
+            class="form-control rounded"
+            placeholder="Search by (Tender-ID, Tender Name)"
+            aria-label="Search"
+            aria-describedby="search-addon"
+          />
+          <button type="button" class="btn btn-dark">search</button>
+        </div>
+      </div> -->
+      <div class="col-md-12 mb-4">
+        <div class="title-wrap d-flex justify-content-between">
           <div class="title-box">
             <h2 class="title-a" style="font-weight: 100">
-              Here are available tenders to look out for
+              Here is a list of all my published tenders
             </h2>
-          </div>
-          <div class="text-center">
-            <a href="{% url 'tenders'%}" class="link-success"
-              >View all tenders <span class="fas fa-angle-right"></span>
-            </a>
           </div>
         </div>
       </div>
-      <div class="container mt-5">
+      <div class="container">
         <div class="card">
           <div class="card-header text-left">
             <h2>Tenders List</h2>
@@ -56,7 +42,7 @@
                   <th>Action</th>
                 </tr>
               </thead>
-              {% if AvailableTenders %} {%for tender in AvailableTenders%}
+              {% if TendersByOwner %} {%for tender in TendersByOwner%}
               <tbody></tbody>
               <tbody>
                 <td>{{tender.tender_no}}</td>
@@ -82,18 +68,20 @@
                     >{{tender.status}}</span
                   >
                 </td>
-                {%endif%}
+                {%endif%} {%if tender.status == 'available'%}
                 <td>
-                  <a
-                    href="{% url 'tender' tender.id %}"
-                    class="btn btn-sm btn-outline-primary"
-                    >View
-                  </a>
+                  <div class="px-3">
+                    <a href="#!" class="btn btn-sm btn-outline-primary"
+                      >Edit
+                    </a>
+                  </div>
                 </td>
-                {%endfor%} {% else %}
+                {%else%}
+                <td></td>
+                {%endif%} {%endfor%} {% else %}
               </tbody>
-              <!-- 1st Entry -->
               <tbody>
+                <!-- 1st Entry -->
                 <tr class="text-center">
                   <td colspan="7" class="text-muted">No Tenders Found</td>
                 </tr>
@@ -106,21 +94,5 @@
       </div>
     </div>
   </div>
-  {%else%}
-  <div class="container mt-2 p-3">
-    <div class="container bg-light mt-5">
-      <div class="row">
-        <div class="col-md-12">
-          <h2>
-            <span class="fas fa-user-shield"></span>Welcome {{ user.username }}
-          </h2>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  {% endif %}
 </div>
-{% endif %}
-<!--  -->
-{% endblock %}
+{%endblock%}

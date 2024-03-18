@@ -110,13 +110,15 @@
         class="row align-items-center justify-content-between bg-light p-3 mb-3"
       >
         <h5>Tender description</h5>
-        <button
-          type="button"
-          class="btn btn-outline-primary"
-          onclick="DownloadTendor()"
-        >
-          <i class="fas fa-file-download"></i> Download Tendor
-        </button>
+        <div class="">
+          <a
+            type="button"
+            class="btn btn-outline-primary"
+            href="{{Tender.document.url}}"
+          >
+            <i class="fas fa-file-download"></i> Download Tendor
+          </a>
+        </div>
       </div>
       <p>{{Tender.description}}</p>
       <p>
