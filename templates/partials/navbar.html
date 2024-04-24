@@ -62,7 +62,9 @@
               >View my published tenders</a
             >
             <a class="dropdown-item" href="#motivation">Bid for a tender</a>
-            <a class="dropdown-item" href="#motivation">Bidding history</a>
+            <a class="dropdown-item" href="{% url 'bid_history' %}"
+              >Bidding history</a
+            >
           </div>
         </li>
         {% endif %}

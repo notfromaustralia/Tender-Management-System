@@ -145,23 +145,32 @@
           Start Bid
         </button>
         {%else%}
-        <button
-          type="button"
+        <a
           class="btn btn-dark btn-block"
           data-toggle="modal"
           data-target="#bid-modal"
         >
           Start Bid
-        </button>
+        </a>
         {%endif%}
       </div>
     </div>
   </div>
 </div>
+{% include 'partials/bid-modal.html' %} {%endif%}
 <script>
-  function DownloadTendor() {
-    console.log("DOWNLOAD TENDOR");
-    alert("Downloading...");
+  // Function to initialize the bid modal when opened
+  function initializeBidModal() {
+    $("#bid-modal").on("shown.bs.modal", function () {
+      // Reinitialize form fields inside the modal
+      $("#bid-modal form")[0].reset(); // Reset form fields
+      // $('#bid-modal form').trigger('reset'); // Trigger validation
+    });
   }
+
+  // Initialize bid modal when the document is ready
+  $(document).ready(function () {
+    initializeBidModal();
+  });
 </script>
-{% include 'partials/bid-modal.html' %} {%endif%} {%endblock%}
+{%endblock%}
