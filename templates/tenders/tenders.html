@@ -68,16 +68,22 @@
                     >{{tender.status}}</span
                   >
                 </td>
-                {%endif%}
-                <td>
+                {%endif%} {%if tender.publisher == user%}
+                <td style="width: 100px">
+                  <a href="#!" class="btn btn-sm btn-outline-secondary"
+                    >Edit <span class="fas fa-edit"></span>
+                  </a>
+                </td>
+                {%else%}
+                <td style="width: 100px">
                   <a
                     href="{% url 'tender' tender.id %}"
                     class="btn btn-sm btn-outline-primary"
                     >View
-                    <span class="bi bi-chevron-right"></span>
+                    <span class="far fa-file"></span>
                   </a>
                 </td>
-                {%endfor%} {% else %}
+                {%endif%} {%endfor%} {% else %}
               </tbody>
               <tbody>
                 <!-- 1st Entry -->

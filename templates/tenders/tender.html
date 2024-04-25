@@ -145,32 +145,17 @@
           Start Bid
         </button>
         {%else%}
-        <a
-          class="btn btn-dark btn-block"
-          data-toggle="modal"
-          data-target="#bid-modal"
-        >
-          Start Bid
-        </a>
+        <div>
+          <a
+            type="button"
+            href="{% url 'bid-application' Tender.id%}"
+            class="btn btn-block btn-dark"
+            ><span class="fas fa-file-invoice-dollar"></span> Start Bid
+          </a>
+        </div>
         {%endif%}
       </div>
     </div>
   </div>
 </div>
-{% include 'partials/bid-modal.html' %} {%endif%}
-<script>
-  // Function to initialize the bid modal when opened
-  function initializeBidModal() {
-    $("#bid-modal").on("shown.bs.modal", function () {
-      // Reinitialize form fields inside the modal
-      $("#bid-modal form")[0].reset(); // Reset form fields
-      // $('#bid-modal form').trigger('reset'); // Trigger validation
-    });
-  }
-
-  // Initialize bid modal when the document is ready
-  $(document).ready(function () {
-    initializeBidModal();
-  });
-</script>
-{%endblock%}
+{%endif%} {%endblock%}

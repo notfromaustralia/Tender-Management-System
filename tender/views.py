@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Tender, Category
 from .forms import TenderForm
-from bid.forms import BidForm
+
 # Create your views here.
 def tender_list(request):
     all_tenders = Tender.objects.all()
@@ -51,22 +51,3 @@ def published_tenders(request):
     return render(request,'tenders/published-tenders.html',{
              'TendersByOwner': tendersByOwner
         })
-
-@login_required
-def tender_bid(request, tenderID):
-    tender = get_object_or_404(Tender, pk=tenderID)
-    bid_form = BidForm()  # Move form instantiation outside of conditional block
-    if request.method == 'POST':
-        bid_form = BidForm(request.POST, request.FILES)
-        if bid_form.is_valid():
-            new_bid = bid_form.save(commit=False)
-            new_bid.tender = tender
-            new_bid.bidder = request.user
-            new_bid.save()
-            tender.save()
-            messages.success(request, 'Request to tender submitted')
-            return render(request, 'tenders/tender.html', {'Tender': tender, 'BidForm': BidForm()})
-        else:
-            messages.error(request, 'Request to tender failed')
-            return render(request, 'tenders/tender.html', {'Tender': tender, 'BidForm': bid_form})
-    return render(request, 'tenders/tender.html', {'Tender': tender, 'BidForm': bid_form})

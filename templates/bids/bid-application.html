@@ -1,0 +1,27 @@
+{%extends 'base.html'%} {% load crispy_forms_tags %} {%block content%}
+<div class="container p-5">
+  <div class="mt-5">
+    <div class="container my-5 rounded mx-auto bg-light shadow p-4">
+      <h2 class="text-center mb-4">
+        Bid For Tender [
+        <span style="color: #f8bf64">{{ Tender.tender_no }}</span> ]
+      </h2>
+      <form
+        action="{% url 'bid-application' Tender.id %}"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        {%csrf_token%}
+        <div class="form-group">
+          {{ BidForm|crispy }}
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-block btn-dark">
+              <span class="far fa-check-circle"></span> Submit
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{%endblock%}
