@@ -1,29 +1,16 @@
-1. Create virtul environment
-   -> $ python -m venv venv
+# COMMANDS FOR RUNNING APP:
 
+1. Create virtual environment
+   -> $ py -m venv venv
 2. Activate virtual environment
-   -> $ venv\scripts\activate
-
-3. Install Django
-   -> $ pip install django
-
-4. Create project
-   -> $ django-admin startproject {PROJECT-NAME}
-
-5. Change directory to created project
-   -> $ cd {PROJECT-NAME}
-
-6. Create apps
-   -> $ python manage.py startapp {APP-NAME}
-
-7. Run application
-   -> $ python manage.py runserver
-
-8. Run migrations
+   -> $ venv\Scripts\activate.bat
+3. Install requirements
+   -> pip install -r requirements.txt
+4. Make migrations
+   -> $ python manage.py makemigrations
+5. Migrate
    -> $ python manage.py migrate
-
-9. create super user
+6. Create superuser
    -> $ python manage.py createsuperuser
-
-10. Make new miggrations
-    -> $ python manage.py makemigrations
+7. Run the server
+   -> $ python manage.py runserver
