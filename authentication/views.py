@@ -56,8 +56,9 @@ def logout(request):
     return render(request, 'webpage/index.html',context)
 
 def dashboard(request):
-    tenders=Tender.objects.filter(status='available')
+    owner = request.user
+    tenders = Tender.objects.filter(status='available').exclude(publisher=owner)
     context ={
         'AvailableTenders': tenders,
     }
-    return render(request,'auth/dashboard.html',context)
+    return render(request, 'auth/dashboard.html', context)
