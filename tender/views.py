@@ -1,6 +1,7 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
 from .models import Tender, Category
 from .forms import TenderForm
 
@@ -57,6 +58,24 @@ def published_tenders(request):
         'TendersByOwner': tendersByOwner
     })
 
+
+@login_required
+def edit_tender(request, tenderID):
+    tender = Tender.objects.get(id=tenderID)
+    form = TenderForm(instance=tender)
+    context = {"form": form, "tender": tender}
+
+    if request.method == "GET":
+        return render(request, "tenders/published-tenders-edit.html", context)
+    elif request.method == "POST":
+        form = TenderForm(request.POST, request.FILES, instance=tender)
+        if form.is_valid():
+            ten = form.save(commit=False)
+            ten.save()
+            return redirect(reverse_lazy("published_tenders"))
+        else:
+            for error in list(form.errors.values()):
+                messages.error(request, error)
 
 def search(request):
     if request.method == "POST":
