@@ -16,6 +16,16 @@
     />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
+  <style>
+    .service {
+      transition: transform 0.3s;
+    }
+
+    .service:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  </style>
   <body>
     {% include 'partials/navbar.html' %}
     <!--Block Content  -->

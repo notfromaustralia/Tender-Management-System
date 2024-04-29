@@ -6,7 +6,7 @@
         <div class="title-wrap d-flex justify-content-between">
           <div class="title-box">
             <h2 class="title-a" style="font-weight: 100">
-              Below is your bidding history
+              Below is your list of incoming bids
             </h2>
           </div>
         </div>
@@ -14,7 +14,7 @@
       <div class="container">
         <div class="card">
           <div class="card-header text-left">
-            <h2>Bidding History</h2>
+            <h2>Incoming Bids</h2>
           </div>
           <div class="card-body">
             <table class="table table-striped table-bordered nowrap text-left">
@@ -23,9 +23,9 @@
                   <th>Tendor No.</th>
                   <th>Tendor Title</th>
                   <th>Bidder</th>
-                  <th>Publisher</th>
                   <th>Bid Amount(BWP)</th>
                   <th>Status</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               {% if Bids %} {%for bid in Bids%}
@@ -40,7 +40,6 @@
                 </td>
                 <td>{{bid.tender.title}}</td>
                 <td>{{bid.bidder.username}}</td>
-                <td>{{bid.tender.publisher.username}}</td>
                 <td>{{bid.bid_amount}}</td>
                 {%if bid.status == 'approved'%}
                 <td>
@@ -60,7 +59,23 @@
                     >{{bid.status}}</span
                   >
                 </td>
-                {%endif%} {%endfor%} {% else %}
+
+                {%endif%}
+                <td style="width: 240px">
+                  <div class="row align-items-center justify-content-around">
+                    <div class="col-md-6">
+                      <a href="#!" class="btn btn-sm btn-outline-success"
+                        ><span class="fas fa-check-circle"></span> Accept
+                      </a>
+                    </div>
+                    <div class="col-md-6">
+                      <a href="#!" class="btn btn-sm btn-outline-danger"
+                        ><span class="fas fa-times-circle"></span> Reject
+                      </a>
+                    </div>
+                  </div>
+                </td>
+                {%endfor%} {% else %}
               </tbody>
               <tbody>
                 <!-- 1st Entry -->
