@@ -13,6 +13,14 @@ def bid_history(request):
     return render(request,'bids/bid-history.html',{
              'Bids': bidsByOwner
         })
+@login_required
+def bid_incoming(request):
+    owner = request.user
+    bidsByOwner = Bid.objects.exclude(bidder = owner)
+    # bidsByOwner = Bid.objects.all()
+    return render(request,'bids/bid-incoming.html',{
+             'Bids': bidsByOwner
+        })
 
 @login_required
 def tender_bid(request, tenderID):
