@@ -6,10 +6,9 @@ from django.db.models import Count
 
 
 def index(request):
-    categories = Category.objects.annotate(item_count=Count("id"))
-    # for obj in category_list:
-
+    categories = Category.objects.annotate(item_count=Count("tender"))
     context = {
         'categories': categories,
     }
     return render(request, 'webpage/index.html', context)
+

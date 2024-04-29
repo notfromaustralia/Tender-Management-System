@@ -14,6 +14,14 @@ def tender_list(request):
     }
     return render(request, 'tenders/tenders.html', context)
 
+def tenders_by_category(request, categoryID):
+    category = get_object_or_404(Category, pk=categoryID)
+    tenders = Tender.objects.filter(category=category)
+    context = {
+        'category': category,
+        'CategoryTenders': tenders
+    }
+    return render(request, 'tenders/tenders-by-category.html', context)
 
 @login_required
 def tender_details(request, tenderID):

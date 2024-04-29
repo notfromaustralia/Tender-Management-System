@@ -1,4 +1,4 @@
-{%extends 'base.html'%} {% block content%} {%if user.is_authenticated%}
+{%extends 'base.html'%} {%block content%}
 <!--  -->
 {% include 'partials/search-bar.html'%}
 <div class="container mt-4 p-3">
@@ -8,7 +8,7 @@
         <div class="title-wrap d-flex justify-content-between">
           <div class="title-box">
             <h2 class="title-a" style="font-weight: 100">
-              Here is a list of all tenders
+              Here is a list of all [{{category.name}}] tenders
             </h2>
           </div>
         </div>
@@ -28,10 +28,9 @@
                   <th>Published</th>
                   <th>Expiry</th>
                   <th>Status</th>
-                  <th>Action</th>
                 </tr>
               </thead>
-              {% if Tenders %} {%for tender in Tenders%}
+              {% if CategoryTenders %} {%for tender in CategoryTenders%}
               <tbody></tbody>
               <tbody>
                 <td>{{tender.tender_no}}</td>
@@ -57,21 +56,8 @@
                     >{{tender.status}}</span
                   >
                 </td>
-                {%endif%} {%if tender.publisher == user%}
-                <td style="width: 100px">
-                  <a href="#!" class="btn btn-sm btn-outline-secondary"
-                    >Edit <span class="fas fa-edit"></span>
-                  </a>
-                </td>
-                {%else%}
-                <td style="width: 100px">
-                  <a
-                    href="{% url 'tender' tender.id %}"
-                    class="btn btn-sm btn-outline-primary"
-                    >View
-                    <span class="far fa-file"></span>
-                  </a>
-                </td>
+                {%endif%} {%if tender.status == 'available'%} {%else%}
+                <td></td>
                 {%endif%} {%endfor%} {% else %}
               </tbody>
               <tbody>
@@ -89,4 +75,4 @@
     </div>
   </div>
 </div>
-{%endif%} {%endblock%}
+{%endblock%}

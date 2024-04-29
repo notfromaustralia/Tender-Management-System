@@ -1,10 +1,9 @@
 {%extends 'base.html'%} {% block content%} {%if user.is_authenticated%}
-<div class="container mt-5">
+<!-- Search -->
+{% include 'partials/search-bar.html'%}
+<div class="container">
   {% if not user.is_superuser %}
-  <div
-    class="container text-white mt-2 p-3 rounded"
-    style="background-color: #f8bf64"
-  >
+  <div class="container text-white p-3 rounded bg-light text-secondary">
     <div class="row">
       <div class="col-md-12">
         <br />
@@ -14,7 +13,7 @@
             <a
               type="button"
               href="{% url 'create_tender'%}"
-              class="btn btn-dark"
+              class="btn btn-outline-dark"
               ><span class="fas fa-plus"></span> Publish Tender
             </a>
           </div>
