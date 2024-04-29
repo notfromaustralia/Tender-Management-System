@@ -60,7 +60,9 @@
                 {%endif%} {%if tender.status == 'available'%}
                 <td>
                   <div class="px-3">
-                    <a href="#!" class="btn btn-sm btn-outline-primary"
+                    <a
+                      href="{% url 'edit-tender' tender.id %}"
+                      class="btn btn-sm btn-outline-primary"
                       >Edit
                     </a>
                   </div>

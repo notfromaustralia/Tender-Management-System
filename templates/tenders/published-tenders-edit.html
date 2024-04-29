@@ -1,0 +1,20 @@
+{%extends 'base.html'%} {% load crispy_forms_tags %} {%block content%}
+<div class="container p-5">
+  <div class="mt-5">
+    <div class="container my-5 rounded mx-auto bg-light shadow p-4">
+      <h2 class="text-center mb-4">Edit Tender</h2>
+      <form
+        method="post"
+        enctype="multipart/form-data"
+      >
+        {%csrf_token%}
+        <div class="form-group">
+          {{form |crispy}}
+          <button type="submit" class="btn btn-primary">Edit Tender</button>
+          <a href="{% url 'tenders' %}" class="btn btn-secondary"> Cancel </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{%endblock%}
