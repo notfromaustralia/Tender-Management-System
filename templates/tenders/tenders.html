@@ -59,7 +59,9 @@
                 </td>
                 {%endif%} {%if tender.publisher == user%}
                 <td style="width: 100px">
-                  <a href="#!" class="btn btn-sm btn-outline-secondary"
+                  <a
+                    href="{% url 'edit-tender' tender.id %}"
+                    class="btn btn-sm btn-outline-secondary"
                     >Edit <span class="fas fa-edit"></span>
                   </a>
                 </td>

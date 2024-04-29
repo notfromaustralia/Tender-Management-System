@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from .models import Tender, Category
 from .forms import TenderForm
+from django.db.models import Q
 
 # Create your views here.
 
@@ -88,8 +89,8 @@ def edit_tender(request, tenderID):
 def search(request):
     if request.method == "POST":
         name = request.POST['searchy']
-        tender = Tender.objects.all().filter(title__contains=name)
-        context = {"tender": tender}
+        tender = Tender.objects.all().filter(Q(title__icontains=name) | Q(tender_no__icontains=name))
+        context = {"tender": tender, "search_term":name}
         for ten in tender:
             print(ten.title)
         return render(request, "webpage/search.html", context)

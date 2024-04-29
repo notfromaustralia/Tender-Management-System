@@ -11,22 +11,28 @@
       </div>
     </div>
   </div>
-  <div class="row justify-content-center">
-    {% for ten in tender %}
+  <div class="row justify-content-center align-items-center">
+    {% if tender %} {% for ten in tender %}
     <div class="col-md-10">
       <div class="card">
         <div class="card-body">
-          <div class="row">
-            <h1>Tender Title: {{ten.title}}</h1>
-          </div>
+          <h3>Tender Title: {{ten.title}}</h3>
 
-          <h2>Description:{{ten.description}}</h2>
-          <h3>Category:{{ten.category}}</h3>
-          <h3>Location:{{ten.location}}</h3>
+          <p>Description:{{ten.description}}</p>
+          <p>Category:{{ten.category}}</p>
+          <p>Location:{{ten.location}}</p>
+          <div class="col-md-12">
+            <a href="{% url 'tender' ten.id %}" class="btn btn-block btn-dark"
+              >View Details
+              <span class="far fa-file"></span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
-    {% endfor %}
+    {% endfor %} {% else %}
+    <p>No results found for "{{ search_term }}".</p>
+    {% endif %}
   </div>
 </div>
 
