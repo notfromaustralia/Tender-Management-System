@@ -2,40 +2,47 @@
 <div class="login-register-container p-5">
   <div class="login-register-form mt-5">
     <!-- Login Form -->
-    <form action="{% url 'login' %}" method="post" id="login-form">
-      {% csrf_token %}
-      <h2 class="text-center mb-4">Login</h2>
-      <div class="form-group">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Username"
-          name="username"
-          required
+    <div class="row align-items-center">
+      <div class="col-md-6 p-5">
+        <form action="{% url 'login' %}" method="post" id="login-form">
+          {% csrf_token %}
+          <h2 class="text-center mb-4">Login</h2>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Username"
+              name="username"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Password"
+              name="password"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn btn-block text-light"
+            style="background-color: #33485d"
+          >
+            Login
+          </button>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <img
+          src="https://images.unsplash.com/photo-1610374792793-f016b77ca51a?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="loginIMG"
+          class="img-fluid"
+          style="height: 100%"
         />
       </div>
-      <div class="form-group">
-        <input
-          type="password"
-          class="form-control"
-          placeholder="Password"
-          name="password"
-          required
-        />
-      </div>
-      <button
-        type="submit"
-        class="btn btn-block text-light"
-        style="background-color: #33485d"
-      >
-        Login
-      </button>
-    </form>
-    <!-- Toggle between login and register forms -->
-    <!-- <p class="text-center mt-3 mb-0">
-      <a href="#" id="register-link">Register</a> |
-      <a href="#" id="login-link">Login</a>
-    </p> -->
+    </div>
   </div>
 </div>
 {% endblock %}
