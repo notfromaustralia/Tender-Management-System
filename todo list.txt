@@ -1,0 +1,9 @@
+Categories on the home page. 
+Search bar (Please)
+
+Implement bid information on publisher's end. To approve/ reject bids. (We could not even see this on the DB, for the submitted bid)  
+The edit tender button is not working, please fix
+
+More details for the bidding form:
+-Company Registration number
+-Date of bid (unless if the system captures this, somehow)
