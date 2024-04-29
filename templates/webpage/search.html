@@ -33,39 +33,31 @@
     <div class="col-md-12">
       <div class="title-wrap d-flex justify-content-between">
         <div class="title-box">
-          <h2 class="title-a" style="font-weight: 100">
-            Select Tender Category
-          </h2>
+          <h2 class="title-a" style="font-weight: 100">Search Results</h2>
         </div>
       </div>
     </div>
   </div>
-  <div class="container mt-5 mb-5">
-    <div class="row">
-      {% if categories %} {% for category in categories %}
-      <div class="col-md-4 mb-5">
+  <div class="row justify-content-center">
+      {% for ten in tender %}
+      <div class="col-md-10">
         <div class="card">
-          <div class="card-block">
-            <div class="card-box-ico2">
-              <span class="{{category.icon}}"></span>
+          <div class="card-body">
+            <div class="row">
+                <h1>Tender Title: {{ten.title}}</h1>
             </div>
-            <h4>{{category.name}}</h4>
+            
+            <h2>Description:{{ten.description}}</h2>
+            <h3>Category:{{ten.category}}</h3>
+            <h3>Location:{{ten.location}}</h3>
           </div>
-          <div class="card-footer">
-            <span class="text-muted">{{ category.item_count }} Tenders</span>
-          </div>
-          <a href="#" class="stretched-link btn btn-block btn-outline-dark"
-            >View</a
-          >
         </div>
       </div>
-      {% endfor %} {% else %}
-      <div class="col-md-12">
-        <p>No Categories Available</p>
-      </div>
-      {% endif %}
+      {% endfor %}
     </div>
-  </div>
 </div>
-<!-- services -->
-{% include 'partials/services.html' %} {% endblock %}
+
+<!-- Footer -->
+
+<!--  -->
+{% endblock %}
