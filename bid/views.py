@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Bid
@@ -40,3 +40,20 @@ def tender_bid(request, tenderID):
             messages.error(request, 'Request to tender failed')
             return render(request, 'bids/bid-application.html', {'Tender': tender, 'BidForm': bid_form})
     return render(request, 'bids/bid-application.html', {'Tender': tender, 'BidForm': bid_form})
+
+def approve_bid(request, bid_id):
+    bid = Bid.objects.get(pk=bid_id)
+    bid.status = 'approved'
+    bid.save()
+    
+    # Set winner to bidder
+    bid.tender.winner = bid.bidder
+    bid.tender.status = 'assigned'  # Change tender status to assigned
+    bid.tender.save()
+    return redirect('bid_incoming')
+
+def reject_bid(request, bid_id):
+    bid = Bid.objects.get(pk=bid_id)
+    bid.status = 'rejected'
+    bid.save()
+    return redirect('bid_incoming')

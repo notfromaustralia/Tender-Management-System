@@ -5,6 +5,7 @@ from .forms import SignUpForm, UserCreationForm
 from .models import SiteUser
 from tender.models import Category,Tender
 from django.contrib import admin
+from django.db.models import Count
 
 def signup(request):
     if request.method == 'POST':
@@ -47,9 +48,9 @@ def login_view(request):
         return render(request, 'auth/login.html')
 
 def logout(request):
-    tender_categories=Category.objects.all()
+    tender_categories = Category.objects.annotate(item_count=Count("tender"))
     context ={
-        'TenderCategories': tender_categories,
+        'categories': tender_categories,
     }
     auth_logout(request)
     messages.success(request, 'You are now logged out')

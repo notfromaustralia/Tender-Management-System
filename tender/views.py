@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -25,14 +26,26 @@ def tenders_by_category(request, categoryID):
     }
     return render(request, 'tenders/tenders-by-category.html', context)
 
-@login_required
+# @login_required
+# def tender_details(request, tenderID):
+#     tender = get_object_or_404(Tender, pk=tenderID)
+#     context = {
+#         'Tender': tender
+#     }
+#     return render(request, 'tenders/tender.html', context)
 def tender_details(request, tenderID):
+    # Check if the user is authenticated
+    if not request.user.is_authenticated:
+        # If not authenticated, set error message and redirect to the same page
+        messages.error(request, 'Please login to access this information or register.')
+        return redirect('index')
+    
+    # If authenticated, continue with the view logic
     tender = get_object_or_404(Tender, pk=tenderID)
     context = {
         'Tender': tender
     }
     return render(request, 'tenders/tender.html', context)
-
 
 @login_required
 def tender_create(request):

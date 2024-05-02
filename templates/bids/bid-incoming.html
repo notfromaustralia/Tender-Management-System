@@ -11,21 +11,21 @@
           </div>
         </div>
       </div>
-      <div class="container">
-        <div class="card">
-          <div class="card-header text-left">
-            <h2>Incoming Bids</h2>
-          </div>
-          <div class="card-body">
-            <table class="table table-striped table-bordered nowrap text-left">
+      <div class="card">
+        <div class="card-header text-left">
+          <h2>Incoming Bids</h2>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered text-left">
               <thead>
                 <tr>
                   <th>Tendor No.</th>
-                  <th>Tendor Title</th>
                   <th>Bidder</th>
                   <th>Bid Amount(BWP)</th>
                   <th>Status</th>
-                  <th>Action</th>
+                  <th>Download Proposal</th>
+                  <th style="width: 700px">Action</th>
                 </tr>
               </thead>
               {% if Bids %} {%for bid in Bids%}
@@ -38,7 +38,6 @@
                     >{{bid.tender.tender_no}}
                   </a>
                 </td>
-                <td>{{bid.tender.title}}</td>
                 <td>{{bid.bidder.username}}</td>
                 <td>{{bid.bid_amount}}</td>
                 {%if bid.status == 'approved'%}
@@ -61,16 +60,31 @@
                 </td>
 
                 {%endif%}
-                <td style="width: 240px">
-                  <div class="row align-items-center justify-content-around">
+                <td>
+                  <a
+                    type="button"
+                    class="link-primary"
+                    href="{{bid.document.url}}"
+                  >
+                    {{bid.document.name}}
+                  </a>
+                </td>
+                <td>
+                  <div class="row">
                     <div class="col-md-6">
-                      <a href="#!" class="btn btn-sm btn-outline-success"
-                        ><span class="fas fa-check-circle"></span> Accept
+                      <a
+                        href="{% url 'approve_bid' bid.id %}"
+                        class="btn btn-block btn-outline-success"
+                      >
+                        Accept
                       </a>
                     </div>
                     <div class="col-md-6">
-                      <a href="#!" class="btn btn-sm btn-outline-danger"
-                        ><span class="fas fa-times-circle"></span> Reject
+                      <a
+                        href="{% url 'reject_bid' bid.id %}"
+                        class="btn btn-block btn-outline-danger"
+                      >
+                        Reject
                       </a>
                     </div>
                   </div>
