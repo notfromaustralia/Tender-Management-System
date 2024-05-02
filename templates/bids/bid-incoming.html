@@ -74,17 +74,17 @@
                     <div class="col-md-6">
                       <a
                         href="{% url 'approve_bid' bid.id %}"
-                        class="btn btn-block btn-outline-success"
+                        class="btn btn-sm btn-outline-success"
                       >
-                        Accept
+                        <span class="fas fa-check-circle"></span> Accept
                       </a>
                     </div>
                     <div class="col-md-6">
                       <a
                         href="{% url 'reject_bid' bid.id %}"
-                        class="btn btn-block btn-outline-danger"
+                        class="btn btn-sm btn-outline-danger"
                       >
-                        Reject
+                        <span class="fas fa-times-circle"></span> Reject
                       </a>
                     </div>
                   </div>
