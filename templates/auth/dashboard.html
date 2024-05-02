@@ -2,7 +2,7 @@
 <!-- Search -->
 {% include 'partials/search-bar.html'%}
 <div class="container">
-  {% if not user.is_superuser %}
+  {% if not user.is_superuser %} {% if site_user.status == 'approved' %}
   <div class="container text-white p-3 rounded bg-light text-secondary">
     <div class="row">
       <div class="col-md-12">
@@ -105,7 +105,46 @@
       </div>
     </div>
   </div>
-  {%else%}
+  {% elif site_user.status == "pending" %}
+  <div class="container text-white p-3 rounded bg-light text-secondary">
+    <div class="row">
+      <div class="col-md-12">
+        <br />
+        <div class="row justify-content-between px-4">
+          <h2><span class="fas fa-user"></span> Welcome {{ user.username }}</h2>
+          <div>
+            <a type="button" class="btn btn-outline-dark" disabled
+              ><span class="fas fa-plus"></span> Account Pending
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-5 mb-5">
+
+  </div>
+  {% elif site_user.status == "rejected" %}
+  <div class="container text-white p-3 rounded bg-light text-secondary">
+    <div class="row">
+      <div class="col-md-12">
+        <br />
+        <div class="row justify-content-between px-4">
+          <h2><span class="fas fa-user"></span> Welcome {{ user.username }}</h2>
+          <div>
+            <a
+              type="button"
+
+              class="btn btn-outline-dark"
+              disabled
+              ><span class="fas fa-plus"></span> Account Rejected
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %} {%else%}
   <div class="container mt-2 p-3">
     <div class="container bg-light mt-5">
       <div class="row">
