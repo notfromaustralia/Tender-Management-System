@@ -63,10 +63,18 @@ def dashboard(request):
     owner = request.user
     user = User.objects.get(id = owner.id)
     site_user = SiteUser.objects.get(user=user.id)
-    print(site_user)
-    tenders = Tender.objects.filter(status='available').exclude(publisher=owner)
-    context ={
-        'AvailableTenders': tenders,
-        "site_user": site_user,
-    }
-    return render(request, 'auth/dashboard.html', context)
+    if site_user:
+        print(site_user)
+        tenders = Tender.objects.filter(status='available').exclude(publisher=owner)
+        context ={
+            'AvailableTenders': tenders,
+            "site_user": site_user,
+        }
+        return render(request, 'auth/dashboard.html', context)
+    else:
+        tenders = Tender.objects.filter(
+            status='available').exclude(publisher=owner)
+        context = {
+            'AvailableTenders': tenders,
+        }
+        return render(request, 'auth/dashboard.html', context)
