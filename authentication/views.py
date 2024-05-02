@@ -9,13 +9,15 @@ from django.db.models import Count
 
 def signup(request):
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
+        print(request.FILES)
+        form = SignUpForm(request.POST, request.FILES)
         if form.is_valid():
             user = form.save()
             company_name = form.cleaned_data.get('company_name')
             mobile_number = form.cleaned_data.get('mobile_number')
             address = form.cleaned_data.get('address')
-            SiteUser.objects.create(user=user, company_name=company_name, mobile_number=mobile_number, address=address)
+            file = form.cleaned_data.get('kyc_document')
+            SiteUser.objects.create(user=user, company_name=company_name, mobile_number=mobile_number, address=address, kyc_document=file)
             messages.success(request, 'Account Created')
             return redirect('login')  # Redirect to login page after successful signup
     else:
